@@ -1,0 +1,92 @@
+header {
+  height: 100vh;
+  padding-top: 7rem;
+  overflow: hidden;
+}
+
+.header__container {
+  text-align: center;
+  height: 100px;
+  position: relative;
+}
+
+/* CTA */
+
+.cta {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Header Schoials */
+.header__socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  position: absolute;
+  left: 0;
+  bottom: -28rem;
+  font-size: 35px;
+}
+
+.header__socials>:nth-child(1):hover{
+  font-size: 45px;
+}
+.header__socials>:nth-child(2):hover{
+  font-size: 45px;
+}
+.header__socials>:nth-child(3):hover{
+  font-size: 45px;
+}
+
+/* Me */
+.me {
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(170, 78, 150, 1) 0%,
+    rgba(115, 106, 113, 1) 0%,
+    rgba(182, 92, 92, 1) 36%,
+    rgba(83, 88, 84, 1) 100%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  background-color: var(--color-primary);
+  width: 22rem;
+  height: 30rem;
+  position: absolute;
+  left: 34%;
+  transform-origin: translateX(-40%);
+  margin-top: 4rem;
+  border-radius: 12rem 12rem 0 0;
+  overflow: hidden;
+  padding: 5rem 1.5rem 1.5rem 1.5rem;
+}
+
+.scroll__down {
+  position: absolute;
+  right: 0;
+  transform: rotate(90deg);
+  bottom: -29rem;
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+/* Responsibe */
+
+@media screen and (max-width: 1024px) {
+  header{
+    height: 68vh;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header{
+    height: 100vh;
+  }
+  .header__socials, .scroll__down {
+    display: none;
+  }
+}

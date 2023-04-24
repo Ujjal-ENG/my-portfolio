@@ -82,6 +82,9 @@
     margin: 1rem 0 1.5rem;
     color: var(--color-light);
   }
+  .about__cards {
+    justify-content: space-around;
+  }
 }
 @media screen and (max-width: 600px) {
   .about__me {

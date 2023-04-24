@@ -1,132 +1,116 @@
-import React from "react";
-import "./experience.css";
-
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
 import { BsFillPatchCheckFill } from "react-icons/bs";
+import { useInView } from "react-intersection-observer";
 
 const Experience = () => {
+  const { ref, inView } = useInView();
+  const controls = useAnimation();
+
+  const items = [
+    {
+      icon: <BsFillPatchCheckFill />,
+      skill: "JavaScript",
+      experience: "Experienced",
+    },
+    {
+      icon: <BsFillPatchCheckFill />,
+      skill: "Node Js",
+      experience: "Experienced",
+    },
+    {
+      icon: <BsFillPatchCheckFill />,
+      skill: "MongoDB",
+      experience: "Experienced",
+    },
+    {
+      icon: <BsFillPatchCheckFill />,
+      skill: "Express Js",
+      experience: "Experienced",
+    },
+    {
+      icon: <BsFillPatchCheckFill />,
+      skill: "Python",
+      experience: "Experienced",
+    },
+    {
+      icon: <BsFillPatchCheckFill />,
+      skill: "JAVA",
+      experience: "Experienced",
+    },
+    {
+      icon: <BsFillPatchCheckFill />,
+      skill: "Django",
+      experience: "Experienced",
+    },
+    {
+      icon: <BsFillPatchCheckFill />,
+      skill: "Spring Boot",
+      experience: "Experienced",
+    },
+  ];
+
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        delay: 0.5,
+        duration: 1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
   return (
-    <section id="experience">
-      <h5>What Skills i Offered for people</h5>
-      <h2>My Experiences</h2>
-
-      <div className="container experience__container">
-        <div className="experience__frontend">
-          <h3>Fronted Development</h3>
-          <div className="experience__content">
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>HTML</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>CSS</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>JavaScript</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>Bootstarp</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>Tailwind CSS</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>Material UI</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>TailBox</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>React JS</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>Next JS</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-          </div>
-        </div>
-
-        <div className="experience__backend">
-          <h3>Backend Development</h3>
-          <div className="experience__content">
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>JavaScipt</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>Node Js</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>MongoDB</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>Express Js</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>Python</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>JAVA</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>PHP Laravel</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>Sanitiy.io</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-
-            <article className="experience__details">
-              <BsFillPatchCheckFill />
-              <h4>Starpy</h4>
-              <small className="text-light">Experienced</small>
-            </article>
-          </div>
-        </div>
+    <section className="experience">
+      <div className="container">
+        <h2 className="experience__title">Experience</h2>
+        <motion.div
+          className="experience__backend"
+          ref={ref}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {items.map((item, index) => (
+            <motion.article
+              key={index}
+              className="experience__card"
+              variants={itemVariants}
+              animate={controls}
+            >
+              <div className="experience__card-content">
+                <div className="experience__card-icon">{item.icon}</div>
+                <div className="experience__card-details">
+                  <h4 className="experience__card-title">{item.skill}</h4>
+                  <small className="experience__card-experience">
+                    {item.experience}
+                  </small>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
